@@ -1,4 +1,4 @@
-const {By, Key, Builder} = require("selenium-webdriver");
+const {By, Key, Builder, Actions} = require("selenium-webdriver");
 require("chromedriver");
 
 async function paste(){
@@ -9,21 +9,22 @@ async function paste(){
 
     await driver.findElement(By.className("textarea -form js-paste-code")).sendKeys("Hello from WebDriver");
 
-    await driver.findElement(By.id("select2-postform-category_id-container")).click();
+    const time = await driver.findElement(By.id("select2-postform-expiration-container")).click();
 
-    const chooseType = await driver.findElement(By.className("select2-search__field")).sendKeys("Gaming", Key.ENTER);
+    //#1
+    // const choosenTime = await driver.findElement(By("//li[@id='select2-postform-expiration-result-g10d-10M']")).click();
 
-    // const time = await driver.findElement(By.id("select2-postform-expiration-container")).click();
+    //#2
+    // const choosenTime = await driver.findElement(By.xpath("//span[@title='Never']"));
+    // chooseType.setValue("10 Minutes");
 
-    // const highlighter = await driver.findElement(By.className("select2-results__option select2-results__option--highlighted")).click("");
+    //#3
+    // await driver.actions({bridge: true}).sendKeys(minTen.Key.down)
+    //     .click()
+    //     .sendKeys(minTen.Key.down)
+    //     .perform();
 
-    // const drop = await driver.findElement(By.id("select2-postform-expiration-result-ms2x-10M")).sendKeys(Key.ENTER);
-
-    const chooseName = await driver.findElement(By.id("postform-name")).sendKeys("helloweb", Key.ENTER);
-
-
-
-
+    const chooseName = await driver.findElement(By.id("postform-name")).sendKeys("helloweb");
 
     //driver.quit();
 
